@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.hypertrack.lib.HyperTrack;
 import com.hypertrack.lib.callbacks.HyperTrackCallback;
 import com.hypertrack.lib.models.ErrorResponse;
@@ -24,6 +25,7 @@ import com.hypertrack.lib.models.User;
 import com.hypertrack.lib.models.UserParams;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,14 +38,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        mAdapter = new TasksAdapter(tasksList);
+        mAdapter = new TasksAdapter(MainActivity.this,tasksList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
+
+        prepareData();
+//        mAdapter.notifyItemInserted(tasksList.size() - 1);
 
         HyperTrack.initialize(MainActivity.this, "pk_test_1665645b7ddebd22fce62d7d0b1d693910daec76");
         checkForLocationSettings();
@@ -126,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
 
     void prepareData()
     {
-
+    tasksList.add(new Task(new LatLng(23,25),"1","Pycon",new Date(2017,11,07)));
+        mAdapter.notifyDataSetChanged();
     }
 
 }
