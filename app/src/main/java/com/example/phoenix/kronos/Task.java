@@ -14,7 +14,7 @@ public class Task {
     LatLng latlng;
     String actionType;
     String description;
-    String location;
+    String locationname;
     Date datetime;
     long id;
 

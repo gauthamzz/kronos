@@ -9,6 +9,17 @@
     >
 
 
+    <Button
+        android:id="@+id/placepickerbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pick a place" />
+
+    <TextView
+        android:id="@+id/locationtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -16,9 +27,29 @@
         android:text="Enter location name:" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/place"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter description" />
+
+    <EditText
+        android:id="@+id/descriptiontxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/addtaskbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add task" />
+
 </LinearLayout>

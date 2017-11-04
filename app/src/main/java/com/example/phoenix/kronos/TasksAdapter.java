@@ -46,7 +46,8 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final Task task = TasksList.get(position);
         holder.description.setText(task.description);
-        holder.locationname.setText(task.location);
+
+        holder.locationname.setText(task.locationname);
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +56,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder
                 notifyDataSetChanged();
             }
         });
+
     }
 
     @Override
