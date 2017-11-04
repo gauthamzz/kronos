@@ -16,6 +16,7 @@ public class Task {
     String description;
     String locationname;
     Date datetime;
+    long id;
 
     public Task()
     {

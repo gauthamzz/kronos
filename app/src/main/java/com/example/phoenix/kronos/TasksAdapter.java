@@ -14,12 +14,14 @@ import java.util.List;
 
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder> {
 
-    private List<Task> taskslist;
 
+    private List<Task> taskslist;
+    public  MainActivity mContext;
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView description,locationname;
         Button delete;
         public MyViewHolder(View view) {
+
             super(view);
             description = (TextView) view.findViewById(R.id.description);
             locationname = (TextView) view.findViewById(R.id.location_name);
@@ -28,7 +30,9 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder
     }
 
 
-    public TasksAdapter(List<Task> taskslist) {
+
+    public TasksAdapter(MainActivity mContext,List<Task> taskslist) {
+        this.mContext = mContext;
         this.taskslist = taskslist;
     }
 
@@ -40,11 +44,22 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder
         return new MyViewHolder(itemView);
     }
 
+
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Task task = taskslist.get(position);
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        final Task task = taskslist.get(position);
         holder.description.setText(task.description);
+
         holder.locationname.setText(task.locationname);
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long id = task.id;
+                taskslist.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
     }
 
     @Override
