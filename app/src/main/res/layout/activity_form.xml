@@ -24,7 +24,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter location name:" />
+        android:text="Add a nick name for this place" />
 
     <EditText
         android:id="@+id/place"
@@ -37,7 +37,7 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter description" />
+        android:text="Message" />
 
     <EditText
         android:id="@+id/descriptiontxt"

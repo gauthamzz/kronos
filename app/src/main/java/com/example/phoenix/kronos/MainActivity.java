@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        mAdapter = new TasksAdapter(MainActivity.this,tasksList);
+        mAdapter = new TasksAdapter(MainActivity.this, tasksList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         recyclerView.setLayoutManager(mLayoutManager);
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         prepareData();
+
 //        mAdapter.notifyItemInserted(tasksList.size() - 1);
 
         HyperTrack.initialize(MainActivity.this, "pk_test_1665645b7ddebd22fce62d7d0b1d693910daec76");
@@ -142,12 +143,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     void prepareData()
     {
 
-    tasksList.add(new Task(new LatLng(23,25),"1","Pycon",new Date(2017,11,07)));
-        mAdapter.notifyDataSetChanged();
+    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
+    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
+    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
+    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
+    mAdapter.notifyDataSetChanged();
 
     }
 

@@ -22,8 +22,12 @@ public class Task {
     {
 
     }
-    public Task(LatLng latlng,String actionType,String location,Date datetime)
+    public Task(LatLng latlng,String description,String actionType,String locationname,Date datetime)
     {
-        latlng=latlng; actionType=actionType; location=location; datetime=datetime;
+        this.latlng=latlng;
+        this.actionType=actionType;
+        this.locationname=locationname;
+        this.datetime=datetime;
+        this.description=description;
     }
 }

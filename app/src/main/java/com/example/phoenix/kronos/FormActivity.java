@@ -61,9 +61,9 @@ public class FormActivity extends AppCompatActivity {
         if (requestCode == PLACE_PICKER_REQUEST) {
             if (resultCode == Activity.RESULT_OK) {
                 Place place = PlacePicker.getPlace(data, this);
-                String toastMsg = String.format("Place: %s", place.getName());
+                String toastMsg = String.format("Place: %s", place.getAddress());
                 TextView p=(TextView)findViewById(R.id.place);
-                p.setText(place.getName());
+                p.setText(place.getAddress());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
             }
         }
