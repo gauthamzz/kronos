@@ -30,6 +30,7 @@ import com.hypertrack.lib.models.ErrorResponse;
 import com.hypertrack.lib.models.SuccessResponse;
 import com.hypertrack.lib.models.User;
 import com.hypertrack.lib.models.UserParams;
+import com.yalantis.phoenix.PullToRefreshView;
 
 import java.util.ArrayList;
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Task> tasksList=new ArrayList<>();
     RecyclerView.Adapter mAdapter;
+    private PullToRefreshView  mPullToRefreshView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,20 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         prepareData();
+
+
+        mPullToRefreshView = (PullToRefreshView) findViewById(R.id.pull_to_refresh);
+        mPullToRefreshView.setOnRefreshListener(new PullToRefreshView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mPullToRefreshView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mPullToRefreshView.setRefreshing(false);
+                    }
+                }, 1000);
+            }
+        });
 
 //        mAdapter.notifyItemInserted(tasksList.size() - 1);
 
@@ -155,5 +171,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
 
     }
+
+
 
 }

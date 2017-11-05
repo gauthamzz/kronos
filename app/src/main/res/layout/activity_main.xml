@@ -9,6 +9,10 @@
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/pull_to_refresh" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
