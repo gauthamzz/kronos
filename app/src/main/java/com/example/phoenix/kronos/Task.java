@@ -5,29 +5,26 @@ import com.google.android.gms.maps.model.LatLng;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-/**
- * Created by phoenix on 4/11/17.
- */
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-
-public class Task {
-    LatLng latlng;
+public class Task extends RealmObject{
+    double lat;
+    double lon;
+    @PrimaryKey
+    int id;
     String actionType;
-    String description;
-    String locationname;
-    Date datetime;
-    long id;
+    String message;
+    String nickname;
 
     public Task()
     {
 
     }
-    public Task(LatLng latlng,String description,String actionType,String locationname,Date datetime)
+    public Task(double lat,double lon,int id,String actionType,String message,String nickname)
     {
-        this.latlng=latlng;
-        this.actionType=actionType;
-        this.locationname=locationname;
-        this.datetime=datetime;
-        this.description=description;
+        this.lat=lat; this.lon=lon;
+        this.actionType=actionType; this.message=message;
+        this.nickname=nickname;
     }
 }

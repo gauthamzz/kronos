@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import io.realm.Realm;
+
 public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder> {
 
 
@@ -46,17 +48,20 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.MyViewHolder
 
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        final int pos=holder.getAdapterPosition();
-        final Task task = taskslist.get(pos);
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
+        Task task = taskslist.get(position);
         assert task != null;
-        holder.description.setText(task.description);
-        holder.locationname.setText(task.locationname);
+        holder.description.setText(task.nickname);
+        holder.locationname.setText(task.message);
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                long id = task.id;
-                taskslist.remove(pos);
+                Realm realm=Realm.getDefaultInstance();
+                realm.beginTransaction();
+                Task t=taskslist.get(position);
+                t.deleteFromRealm();
+                realm.commitTransaction();
+                taskslist.remove(position);
                 notifyDataSetChanged();
             }
         });

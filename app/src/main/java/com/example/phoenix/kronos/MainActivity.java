@@ -38,9 +38,13 @@ import java.util.Date;
 import java.util.Arrays;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
+
 
 public class MainActivity extends AppCompatActivity {
     int PLACE_PICKER_REQUEST = 1;
+    Realm realm;
     RecyclerView recyclerView;
     ArrayList<Task> tasksList=new ArrayList<>();
     RecyclerView.Adapter mAdapter;
@@ -50,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Realm.init(this);
+        realm=Realm.getDefaultInstance();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
         mAdapter = new TasksAdapter(MainActivity.this, tasksList);
@@ -145,12 +150,9 @@ public class MainActivity extends AppCompatActivity {
 
     void prepareData()
     {
-
-    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
-    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
-    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
-    tasksList.add(new Task(new LatLng(23,25),"anything","hello","1",new Date(2017,11,07)));
-    mAdapter.notifyDataSetChanged();
+        RealmResults<Task> tasks=realm.where(Task.class).findAll();
+        tasksList.addAll(tasks);
+        mAdapter.notifyDataSetChanged();
 
     }
 

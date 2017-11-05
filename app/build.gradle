@@ -37,6 +37,11 @@ dependencies {
         transitive = true;
     }
 }
+apply plugin: 'realm-android'
+
+realm {
+    syncEnabled = true;
+}
 /**
  * HyperTrack SDKs are shipped as @aar formats. Include the HyperTrack SDK&#x27;s
  * latest version as specified below. For detailed SDK changelog, Refer to
